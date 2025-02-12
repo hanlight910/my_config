@@ -1,0 +1,61 @@
+;; Kanat configuartion for caps to esc+ctrl
+
+(defcfg
+	;;process-unmapped-keys no
+)
+(defalias 
+  esct (tap-hold 100 100 esc lctrl)
+  al_nav (tap-hold-release 200 200 tab (layer-while-held U_NAV))
+  lal_et (tap-hold-release 100 100 Enter (layer-while-held U_NAV))
+  ral_et (tap-hold-release 200 200 ralt lalt)
+  al_rse1 (tap-hold-release 100 150 spc (layer-while-held RAISE))
+  sw_nav (tap-hold-release 100 100 caps (layer-while-held U_NAV))
+  al_bas (layer-switch base)
+  al_lay (multi lalt @al_bas)
+  sh_1 (multi lsft 1)
+  sh_2 (multi lsft 2)
+  sh_3 (multi lsft 3)
+  sh_4 (multi lsft 4)
+  sh_5 (multi lsft 5)
+  sh_6 (multi lsft 6)
+  sh_7 (multi lsft 7)
+  sh_8 (multi lsft 8)
+  sh_9 (multi lsft 9)
+  sh_0 (multi lsft 0)
+  sh_' (multi lsft ')
+  sh_\ (multi lsft \)
+  sh_; (multi lsft ;)
+  sh_] (multi lsft ])
+  sh_[ (multi lsft [)
+  sh_- (multi lsft -)
+  sh_/ (multi lsft /)
+  sh_` (multi lsft `)
+)
+(defsrc
+	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o		p    [ 
+	caps 	a    	s    	d    	f    	g    	h    	j    	k		l		;  
+	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		/ 
+	lctl 	lmet 	lalt           	spc            	ralt	rmet 	rctl
+)
+
+(deflayer base 
+  	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p    bspc
+  	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		' 
+  	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
+  	lctl 	lmet 	@lal_et        	@al_rse1     	@ral_et	rmet 	rctl
+)
+
+(deflayer U_NAV
+  	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o    	\    @sh_\
+  	caps 	@sh_`  	s    	d    	f    	g    	lft    	down  	up    	rght	;
+  	lsft 	z    	x    	c    	v    	b    	n    	pgdn	pgup	.		@sh_/    	
+  	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
+)
+
+(deflayer RAISE
+	\		@sh_1   @sh_2  	@sh_3  	@sh_4  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0	bspc   
+  	`		1    	2    	3    	4    	5    	6    	7    	8    	9    	0	
+	XX		;    	'    	@sh_; 	@sh_[   {    	}    	@sh_]	-		=		/    
+  	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
+)
+

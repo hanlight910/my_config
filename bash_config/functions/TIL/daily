@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TIL_DAILY_PATH="/home/light/coding/TIL/daily"
+FILE_NAME=$(date +%Y-%m-%d)
+
+if [ -f "$TIL_DAILY_PATH/$FILE_NAME" ]; then
+        echo "$FILE_NAME TIL file already exists"
+else 
+        nvim $TIL_DAILY_PATH/$FILE_NAME
+fi

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GNOME_CONFIG_PATH="$BASH_CONFIG/gnome_setting"
+
+if [ -f $GNOME_CONFIG_PATH/wallpaper ]; then
+    echo "$GNOME_CONFIG_PATH consist"
+    . "$GNOME_CONFIG_PATH/wallpaper" 
+else
+    echo "$WALLPAPER_PATH/wallpaper doesnt' exist"
+fi
+
+

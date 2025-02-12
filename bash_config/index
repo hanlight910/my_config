@@ -1,0 +1,2 @@
+#!bin/bash
+. "$HOME/.my_config/bash_config/shell"

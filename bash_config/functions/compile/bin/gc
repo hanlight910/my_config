@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# 입력된 파일의 확장자 확인
+inputed_file_path=$1
+file_name_without_path=$(basename -- "$inputed_file_path")
+
+file_extension="${file_name_without_path##*.}"
+
+# C 파일인지 확인
+if [ "$file_extension" = "c" ]; then
+    # 파일 이름에서 확장자 제거
+    file_name=".${file_name_without_path%.*}"
+
+    echo "file name wihout_pathis $file_name"
+
+    # 파일 컴파일
+    gcc -lm -o "$file_name" "$1" -lm -g
+
+    # 컴파일 성공 여부 확인
+    if [ $? -eq 0 ]; then
+        echo "컴파일 성공: $file_name"
+        
+        # gdb로 디버깅
+        gdb "$file_name"
+    else
+        echo "컴파일 실패: $file_name"
+    fi
+else
+    echo "C 파일이 아닙니다."
+fi
+
