@@ -46,9 +46,9 @@
 )
 
 (deflayer U_NAV
-  	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o    	\    @sh_\
-  	caps 	@sh_`  	s    	d    	f    	g    	lft    	down  	up    	rght	;
-  	lsft 	z    	x    	c    	v    	b    	n    	pgdn	pgup	.		@sh_/    	
+	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		@sh_\
+  	F11 	@sh_`  	s    	d    	f    	g    	lft    	down  	up    	rght	;
+  	F12 	z    	x    	c    	v    	b    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
 )
 
@@ -58,4 +58,3 @@
 	XX		;    	'    	@sh_; 	@sh_[   {    	}    	@sh_]	-		=		/    
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
 )
-

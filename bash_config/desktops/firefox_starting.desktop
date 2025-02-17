@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Run Firefox
+Exec=/usr/bin/firefox
+Icon=/path/to/icon.png
+Comment=Custom application to run at startup
+X-GNOME-Autostart-enabled=true

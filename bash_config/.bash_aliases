@@ -3,7 +3,9 @@
 # convention
 # command_argument
 HOME_PATH="/home/light"
-BASH_CONFIG_PATH="/home/light/.bash_config"
+MY_CONFIG="$HOME/.my_config"
+INSTALL="$MY_CONFIG/bash_config/install"
+BASH_CONFIG_PATH="/home/light/.my_config/bash_config"
 FUNCTIONS_PATH="/home/light/.bash_config/functions"
 ASSISTS_PATH="/home/light/.bash_config/functions/assists"
 COMPILE_PATH="/home/light/.bash_config/functions/compile"
@@ -38,6 +40,7 @@ alias cL="cd $LINUX_PATH"
 
 alias eb=". $HOME_PATH/.bashrc"
 alias mkcd=". $ASSISTS_PATH/mkcd"
+alias et="cp $MY_CONFIG/tmux/.tmux.conf ~/.tmux.conf"
 
 alias gS="git status"
 alias gC="git checkout"
@@ -48,3 +51,4 @@ alias alsa="alsamixer"
 alias boj="xdg-open https://www.acmicpc.net/step"
 alias imgMove="mv ~/Screenshots/\"$(ls ~/Screenshots -t | head -n 1)\""
 
+alias tm="tmux new -s l"
