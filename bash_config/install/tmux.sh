@@ -1,4 +1,3 @@
-
 # Neccessary libraries
 sudo apt-get install libevent-dev ncurses-dev build-essential bison pkg-config -y
 
