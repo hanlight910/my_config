@@ -46,8 +46,8 @@
 )
 
 (deflayer U_NAV
-	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		@sh_\
-  	F11		@sh_`	XX   	XX    	f    	g    	lft    	down  	up    	rght	;
+	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
+  	F11		@sh_`	@sh_\  	XX    	f    	g    	lft    	down  	up    	rght	;
   	F12 	z    	x    	c    	v    	b    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
 )
@@ -58,3 +58,4 @@
 	XX		\    	`		@sh_; 	@sh_[   {    	}    	@sh_]	-		=		/    
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
 )
+

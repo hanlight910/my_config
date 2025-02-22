@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Run gnome-terminal
-Exec=/usr/bin/gnome-terminal
+Name=Run Ghostty
+Exec=/usr/bin/ghostty
 Icon=/path/to/icon.png
 Comment=Custom application to run at startup
 X-GNOME-Autostart-enabled=true
