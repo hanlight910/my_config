@@ -4,12 +4,14 @@
 	;;process-unmapped-keys no
 )
 (defalias 
+	RAI (layer-while-held RAISE)
+	LOW (layer-while-held LOWER)
   esct (tap-hold 100 100 esc lctrl)
-  al_nav (tap-hold-release 200 200 tab (layer-while-held U_NAV))
-  lal_et (tap-hold-release 100 100 Enter (layer-while-held U_NAV))
+  al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
+  lal_et (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ral_et (tap-hold-release 200 200 ralt lalt)
   al_rse1 (tap-hold-release 100 150 spc (layer-while-held RAISE))
-  sw_nav (tap-hold-release 100 100 caps (layer-while-held U_NAV))
+  sw_nav (tap-hold-release 100 100 caps (layer-while-held LOWER))
   al_bas (layer-switch base)
   al_lay (multi lalt @al_bas)
   sh_1 (multi lsft 1)
@@ -36,26 +38,29 @@
 	caps 	a    	s    	d    	f    	g    	h    	j    	k		l		;  
 	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		/ 
 	lctl 	lmet 	lalt           	spc            	ralt	rmet 	rctl
+	Home	End
 )
 
 (deflayer base 
   	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p    bspc
   	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		' 
   	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
-  	lctl 	lmet 	@lal_et        	@al_rse1     	@ral_et	rmet 	rctl
-)
-
-(deflayer U_NAV
-	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
-  	F11		@sh_`	@sh_\  	XX    	f    	g    	lft    	down  	up    	rght	;
-  	F12 	z    	x    	c    	v    	b    	n    	pgdn	pgup	.		@sh_/    	
-  	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
+  	lctl 	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+	@RAI	@LOW
 )
 
 (deflayer RAISE
 	tab		@sh_1   @sh_2  	@sh_3  	@sh_4  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0	bspc   
   	caps	1    	2    	3    	4    	5    	6    	7    	8    	9    	0	
-	XX		\    	`		@sh_; 	@sh_[   {    	}    	@sh_]	-		=		/    
+	XX		\    	`		@sh_; 	@sh_[   [    	]    	@sh_]	-		=		/    
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
+	XX		XX
 )
 
+(deflayer LOWER
+	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
+  	F11		@sh_`	@sh_\   +   	f    	g    	lft    	down  	up    	rght	;
+  	F12 	\    	`   	@sh_-  	@sh_[ 	[    	n    	pgdn	pgup	.		@sh_/    	
+  	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
+	XX		XX
+)
