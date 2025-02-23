@@ -59,8 +59,9 @@
 
 (deflayer LOWER
 	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
-  	F11		@sh_`	@sh_\   +   	f    	g    	lft    	down  	up    	rght	;
+  	F11		@sh_`	@sh_\   +   	@sh_;  	g    	lft    	down  	up    	rght	;
   	F12 	\    	`   	@sh_-  	@sh_[ 	[    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
 	XX		XX
 )
+ 
