@@ -2,6 +2,7 @@
 
 echo "sourced bash_variables"
 export BASH_CONFIG="$HOME/.my_config/bash_config"
+export CONFIG="$HOME/.my_config/"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/home/light/.bash_config/functions/compile/bin"
 
