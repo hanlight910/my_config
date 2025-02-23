@@ -4,8 +4,8 @@ Documentation=https://github.com/jtroo/kanata
 
 [Service] 
 Type=simple
-ExecStart=~/.cargo/bin/kanata --cfg ~/.my_config/kanata/config.kbd
+ExecStart=/home/light/.cargo/bin/kanata --cfg /home/light/.my_config/kanata/config.kbd
 Restart=never
 
-[In stall]
+[Install]
 WantedBy=default.target 
