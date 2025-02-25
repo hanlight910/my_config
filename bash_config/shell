@@ -53,3 +53,5 @@ export PATH="$BASH_CONFIG/functions:$PATH"
 eval "$(zoxide init bash)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
+tmux new -s "al"
+set -o vi
