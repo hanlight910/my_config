@@ -2,8 +2,9 @@
 
 image_frieren="frieren.jpeg"
 image_anime_boy="anime_boy_chill.jpg"
+image_night_sky="wp2150006-anime-city-wallpapers.png"
 
-image_path="$BASH_CONFIG/source/pictures/wallpapers/$image_frieren"
+image_path="$BASH_CONFIG/source/pictures/wallpapers/$image_night_sky"
 
 
 set_gnome_background() {
