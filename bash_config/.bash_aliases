@@ -52,3 +52,4 @@ alias boj="xdg-open https://www.acmicpc.net/step"
 alias imgMove="mv ~/Pictures/Screenshots/\"$(ls ~/Pictures/Screenshots -t | head -n 1)\""
 
 alias tm="tmux new -s l"
+alias ek="cp $CONFIG/kanata/kanata.service ~/.config/systemd/user/"

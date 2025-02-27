@@ -4,14 +4,24 @@
 . $HOME/.my_config/bash_config/.bash_variables
 . $BASH_CONFIG/.env
 
+. "$HOME/.cargo/env"
+
+
 export PS1="\e[0;34m\u@\h \w> \e[m"
 eval "$(starship init bash)"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/light/development/flutter/bin"
 export PATH="$PATH:/home/light/.bash_config/hancom"
+export PATH="$PATH:/$SPRING_HOME/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+export PATH="$PATH:$BASH_CONFIG/functions"
+export PATH="$PATH:$HOME/.rvm/bin"
+
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.2-oracle-x64
 export SPRING_HOME=/opt/spring-3.4.0
-export PATH="$PATH:/$SPRING_HOME/bin"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 
 if [ -f $BASH_CONFIG/.bash_aliases ]; then
 	echo "sourced bash_aliases"
@@ -46,12 +56,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
 
-export PATH="~/.local/bin:$PATH"
-export PATH="~/development/flutter/bin:$PATH"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$BASH_CONFIG/functions:$PATH"
 eval "$(zoxide init bash)"
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
 tmux new -s "al"
 set -o vi
+eval "$(fzf --bash)"
