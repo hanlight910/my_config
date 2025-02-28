@@ -1,0 +1,46 @@
+#!/bin/bash
+
+image_frieren="frieren.jpeg"
+image_anime_boy="anime_boy_chill.jpg"
+image_night_sky="wp2150006-anime-city-wallpapers.png"
+
+image_path="$BASH_CONFIG/source/pictures/wallpapers/$image_night_sky"
+
+set_gnome_background() {
+    local image_path="$1"
+
+    if [ ! -f "$image_path" ]; then
+        echo "File does not exists: file://$image_path"
+    fi
+
+	echo "output: $image_path"
+    gsettings set org.gnome.desktop.background picture-uri "file://$image_path"
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://$image_path"
+
+    if [ $? -ne 0 ]; then
+        echo "$?"
+        echo "Failed to set the background image"
+    fi
+}
+
+background_image=$(gsettings get org.gnome.desktop.background picture-uri | tr -d "'")
+first_image=""
+found_image=""
+for image in "$BASH_CONFIG/source/pictures/wallpapers/"*; do
+	if [ -z "$first_image" ]; then
+		first_image="$image"
+	fi
+	if [ -n "$found_image" ]; then
+		found_image="$image"
+		break;
+	fi
+	if [ "$background_image" = "file://$image" ]; then
+		found_image="$image"
+	fi
+done
+if [ "file://$found_image" = "$background_image" ]; then
+	background_image="$first_image"
+else
+	background_image="$found_image"
+fi
+set_gnome_background "$background_image"

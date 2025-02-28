@@ -1,4 +1,0 @@
-#!bin/bash
-HTTPS_PATH="https://"
-
-xdg-open "$HTTPS_PATH/youtube.com"

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mv ~/Downloads/$(ls -t ~/Downloads | head -n 1) $CONFIG/bash_config/source/pictures/wallpapers/

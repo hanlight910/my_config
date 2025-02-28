@@ -1,47 +1,5 @@
 #!bin/bash
-
 # export PS1="\n$(__mkps1_box_top)$(__mkps1_debian_chroot)$(__mkps1_exitcode)$(__mkps1_time)$(__mkps1_username)$(__mkps1_arrows) $(__mkps1_workdir)$(__mkps1_git)\n$(__mkps1_box_bottom)$(__mkps1_user_prompt)"
-. $HOME/.my_config/bash_config/.bash_variables
-. $BASH_CONFIG/.env
-
-. "$HOME/.cargo/env"
-
-
-export PS1="\e[0;34m\u@\h \w> \e[m"
-eval "$(starship init bash)"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$PATH:/home/light/development/flutter/bin"
-export PATH="$PATH:/home/light/.bash_config/hancom"
-export PATH="$PATH:/$SPRING_HOME/bin"
-export PATH="$PATH:$HOME/.pub-cache/bin"
-export PATH="$PATH:$BASH_CONFIG/functions"
-export PATH="$PATH:$HOME/.rvm/bin"
-
-export JAVA_HOME=/usr/lib/jvm/jdk-23.0.2-oracle-x64
-export SPRING_HOME=/opt/spring-3.4.0
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-
-if [ -f $BASH_CONFIG/.bash_aliases ]; then
-	echo "sourced bash_aliases"
-	. $BASH_CONFIG/.bash_aliases
-fi
-
-if [ -f $BASH_CONFIG/.bash_variables ]; then
-	echo "sourced bash_variables"
-	. $BASH_CONFIG/.bash_variables
-fi
-
-if [ -f $BASH_CONFIG/gnome_setting/.gnome_config ]; then
-	echo "sourced gnome_setting"
-	. $BASH_CONFIG/gnome_setting/.gnome_config
-fi
-
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -50,14 +8,59 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f ~/.my_config/bash_config/bash_path.sh ]; then
+	. ~/.my_config/bash_config/bash_path.sh
+fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+if [ -f $BASH_VARIABLE ]; then
+	. $BASH_VARIABLE
+else
+	echo "bash_variables is missing"
+fi
 
+if [ -f $BASH_ALIAS ]; then
+	. $BASH_ALIAS
+else
+	echo "bash_aliases is missing"
+fi
+
+if [ ! -f $ENV ]; then
+	echo "env file is missing, exit code: $?";
+else
+	. $ENV
+fi
+
+
+if [ ! -f $GNOME_CONFIG ]; then
+	echo "gnome_setting is missing"
+else
+	. $GNOME_CONFIG
+fi
+
+if [ ! -f $HOME/.cargo/env ]; then
+	echo "cargo/env is missing";
+else
+	. $HOME/.cargo/env
+fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-# Set up fzf key bindings and fuzzy completion
-tmux new -s "al"
-set -o vi
 eval "$(fzf --bash)"
+#
+set -o vi
+session="workspace"
+# tmux new -s "al"
+if [ -n "$TMUX" ]; then
+	current_session=$(tmux display-message -p '#S')
+	if [ $current_session != $session ]; then
+		if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
+			tmux attach-session -t $session
+		fi
+	fi
+else
+	if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
+		tmux attach-session -t $session
+	else
+		tmux new -s $session
+	fi
+fi

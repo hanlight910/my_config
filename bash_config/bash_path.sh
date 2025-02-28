@@ -1,0 +1,21 @@
+#!/bin/bash
+export XDG_CONFIG_HOME="$HOME/.config"
+export CONFIG="$HOME/.my_config"
+export BASH_CONFIG="$CONFIG/bash_config"
+export ENV="$BASH_CONFIG/.env"
+export BASH_PATH="$BASH_CONFIG/bash_path.sh"
+export BASH_VARIABLE="$BASH_CONFIG/.bash_variables"
+export BASH_ALIAS="$BASH_CONFIG/.bash_aliases"
+export GNOME_SETTING="$BASH_CONFIG/gnome_setting"
+export GNOME_CONFIG="$GNOME_SETTING/.gnome_config"
+
+# bin
+export PATH="$PATH:$BASH_CONFIG/scripts"
+export PATH="$PATH:/home/light/.bash_config/functions/compile/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$PATH:/home/light/development/flutter/bin"
+export PATH="$PATH:/home/light/.bash_config/hancom"
+export PATH="$PATH:/$SPRING_HOME/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/.rvm/bin"

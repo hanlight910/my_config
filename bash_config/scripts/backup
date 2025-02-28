@@ -1,0 +1,5 @@
+#!/bin/bash
+
+current_date="$(date +%F)"
+user=${HOME##*/}
+tar -zvcf "$current_date$user.tar.gz" $HOME
