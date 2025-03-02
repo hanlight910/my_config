@@ -7,7 +7,7 @@
 	RAI (layer-while-held RAISE)
 	LOW (layer-while-held LOWER)
 	KPAD (layer-while-held KEYPAD)
-  esct (tap-hold 100 100 esc lctrl)
+  esct (tap-hold 100 200 esc lctrl)
   al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
   lal_et (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ral_et (tap-hold-release 200 200 ralt lalt)

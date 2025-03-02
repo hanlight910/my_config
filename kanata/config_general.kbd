@@ -6,7 +6,7 @@
 (defalias 
 	RAI (layer-while-held RAISE)
 	LOW (layer-while-held LOWER)
-  esct (tap-hold 100 100 esc lctrl)
+  esct (tap-hold 100 200 esc lctrl)
   al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
   en_low (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ra_la (tap-hold-release 200 200 ralt lalt)
@@ -46,7 +46,7 @@
   	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p    bspc
   	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		' 
   	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
-  	lctl 	lmet 	@RAI        	@sp_ra			@sp_low	rmet 	rctl
+  	lctl 	lmet 	@RAI        	@sp_low			@ra_la	rmet 	rctl
 	@RAI	@LOW
 )
 
@@ -65,3 +65,4 @@
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
 	XX		XX
 )
+ 
