@@ -1,4 +1,4 @@
-;; Kanat configuartion for caps to esc+ctrl
+;; Kanata configuartion for caps to esc+ctrl
 
 (defcfg
 	;;process-unmapped-keys no
@@ -7,7 +7,7 @@
 	RAI (layer-while-held RAISE)
 	LOW (layer-while-held LOWER)
 	KPAD (layer-while-held KEYPAD)
-  esct (tap-hold 100 200 esc lctrl)
+  esct (tap-hold 100 150 esc lctrl)
   al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
   lal_et (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ral_et (tap-hold-release 200 200 ralt lalt)
@@ -60,18 +60,25 @@
 	XX		XX
 )
 
-
 (deflayer LOWER
 	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
-  	F11		@sh_`	@sh_\   @sh_=  	@sh_;  	g    	lft    	down  	up    	rght	;
+	F11		@sh_`	@sh_\   @sh_=  	@sh_;  	g    	lft    	down  	up    	rght	;
   	F12 	\    	`   	@sh_-  	@sh_[ 	[    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
 	XX		XX
+) 
+
+(defalias
+	;; every milisecond, pixel
+	msup (movemouse-up 5 4)
+	mslft (movemouse-left 5 4)
+	msdwn (movemouse-down 5 4)
+	msrht (movemouse-right 5 4)
 )
- 
+
 (deflayer KEYPAD
-	XX		XX		XX    	XX    	XX    	XX    	XX    	kp7		kp8		kp9		XX		XX
-	XX		XX		XX		XX    	XX    	XX    	XX    	kp4    	kp5		kp6		XX  
+	XX		XX		XX    	XX    	XX    	XX    	XX    	mlft	mmid	mrgt	XX		XX
+	XX		XX		XX    	XX    	XX    	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
 	XX		XX		XX		XX    	XX    	XX    	XX    	kp1    	kp2    	kp3   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
 	XX		XX
