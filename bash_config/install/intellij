@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# wget "https://download.jetbrains.com/idea/ideaIU-2024.3.4.1.tar.gz"
+FILENAME="ideaIU-2024.3.4.1"
+TARFILE=ideaIU-2024.3.4.1.tar.gz
+DIRNAME=$(tar -ztf $TARFILE | head -n 1)
+tar -zxf $TARFILE
+if [ -n "$DIRNAME" ] && [ -d /opt/$DIRNAME ]; then
+	sudo rm -r /opt/$DIRNAME
+fi
+
+sudo mv $DIRNAME /opt/
+sudo ln -sf /opt/$DIRNAME/bin/idea /usr/local/bin/intellij
+#
+rm ideaIU-2024.3.4.1.tar.gz

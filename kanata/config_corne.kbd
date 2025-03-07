@@ -7,7 +7,7 @@
 	RAI (layer-while-held RAISE)
 	LOW (layer-while-held LOWER)
 	KPAD (layer-while-held KEYPAD)
-  esct (tap-hold 100 150 esc lctrl)
+  esct (tap-hold 100 130 esc lctrl)
   al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
   lal_et (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ral_et (tap-hold-release 200 200 ralt lalt)
@@ -36,6 +36,7 @@
   sh_= (multi lsft =)
   sh_bas (multi lsft (layer-while-held base))
 )
+
 (defsrc
 	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o		p		[ 
 	caps 	a    	s    	d    	f    	g    	h    	j    	k		l		;  
@@ -46,16 +47,26 @@
 
 (deflayer base  
   	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p		bspc
-  	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		' 
+  	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		@'es
   	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
-  	lctl 	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+  	lrpv	lmet 	lalt        	spc				@ral_et	rmet 	rctl
 	@RAI	@LOW
 )
 
+(defalias
+  atl (multi alt (layer-while-held LOWER))
+  lft (multi (release-key alt) left) ;; release alt if held and also press left
+  rgt (multi (release-key alt) rght) ;; release alt if held and also press rght
+  jk (tap-hold-press 130 1200 j esc)
+  kj (tap-hold-press 130 1200 k esc)
+  'es (tap-dance 130 (' esc))
+  
+)
+
 (deflayer RAISE
-	tab		@sh_1   @sh_2  	@sh_3  	@sh_4  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		bspc   
+	lrpv	@sh_1   @sh_2  	@sh_3  	@sh_4  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		bspc   
   	caps	1    	2    	3    	4    	5    	6    	7    	8    	9    	0	
-	XX		@sh_bas @KPAD	XX		XX		XX    	]    	@sh_]	-		=		/    
+	XX		@sh_bas @KPAD	@atl	@lft	@rgt   	]    	@sh_]	-		=		/    
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
 	XX		XX
 )
@@ -74,12 +85,16 @@
 	mslft (movemouse-left 5 4)
 	msdwn (movemouse-down 5 4)
 	msrht (movemouse-right 5 4)
+	mwu (mwheel-up 50 120)
+	mwd (mwheel-down 50 120)
+	mwl (mwheel-left 50 120)
+	mwr (mwheel-right 50 120)
 )
 
 (deflayer KEYPAD
 	XX		XX		XX    	XX    	XX    	XX    	XX    	mlft	mmid	mrgt	XX		XX
 	XX		XX		XX    	XX    	XX    	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
-	XX		XX		XX		XX    	XX    	XX    	XX    	kp1    	kp2    	kp3   	XX    
+	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
 	XX		XX
 )
