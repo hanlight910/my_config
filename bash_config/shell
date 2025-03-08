@@ -8,14 +8,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.my_config/bash_config/bash_path.sh ]; then
-	. ~/.my_config/bash_config/bash_path.sh
-fi
-
 if [ -f $BASH_VARIABLE ]; then
 	. $BASH_VARIABLE
 else
 	echo "bash_variables is missing"
+fi
+
+if [ -f ~/.my_config/bash_config/bash_path.sh ]; then
+	. ~/.my_config/bash_config/bash_path.sh
 fi
 
 if [ -f $BASH_ALIAS ]; then
