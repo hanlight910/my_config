@@ -4,6 +4,8 @@ alias nv="nvim"
 alias c="clear"
 # command_argument
 alias eb=". $HOME/.bashrc"
+alias ev=". ./venv/bin/activate"
+
 alias et="cp $CONFIG/tmux/.tmux.conf ~/.tmux.conf"
 alias ek="cp $CONFIG/kanata/kanata.service ~/.config/systemd/user/"
 
