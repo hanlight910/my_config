@@ -17,3 +17,6 @@ alias gC="git checkout"
 alias tm="tmux new -s l"
 alias d="cd $HOME/Downloads"
 alias md="mv ~/Downloads/\"\$(ls ~/Downloads/ -t | head -n 1)\"" 
+
+alias rd="ollama run deepseek-r1:7b"
+alias rl="ollama run llama3.2:latest"

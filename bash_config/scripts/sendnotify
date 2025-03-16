@@ -1,0 +1,3 @@
+#!/bin/bash
+min=$1
+echo "echo 'hello'"  | at now + 1 minutes
