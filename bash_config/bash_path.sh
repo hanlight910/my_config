@@ -1,12 +1,13 @@
 #!/bin/bash
-export XDG_CONFIG_HOME="$HOME/.config" export CONFIG="$HOME/.my_config"
+export XDG_CONFIG_HOME="$HOME/.config" 
+export CONFIG="$HOME/.my_config"
 export BASH_CONFIG="$CONFIG/bash_config"
 export ENV="$BASH_CONFIG/.env"
 export BASH_PATH="$BASH_CONFIG/bash_path.sh"
 export BASH_VARIABLE="$BASH_CONFIG/.bash_variables"
 export BASH_ALIAS="$BASH_CONFIG/.bash_aliases"
 export GNOME_SETTING="$BASH_CONFIG/gnome_setting"
-export GNOME_CONFIG="$GNOME_SETTING/.gnome_config"
+export GNOME_CONFIG="$GNOME_SETTING/.gnome_config.sh"
 
 # bin
 export PATH="$BASH_CONFIG/scripts:$PATH"

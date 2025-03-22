@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # export PS1="\n$(__mkps1_box_top)$(__mkps1_debian_chroot)$(__mkps1_exitcode)$(__mkps1_time)$(__mkps1_username)$(__mkps1_arrows) $(__mkps1_workdir)$(__mkps1_git)\n$(__mkps1_box_bottom)$(__mkps1_user_prompt)"
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -65,3 +65,4 @@ if [ -z "$TMUX" ]; then
 		tmux new -s $session
 	fi
 fi
+
