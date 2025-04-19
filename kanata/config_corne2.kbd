@@ -1,0 +1,62 @@
+;; Kanata configuartion for caps to esc+ctrl
+
+(defcfg
+	;;process-unmapped-keys no
+)
+(defalias 
+  esct (tap-hold 100 130 esc lctrl)
+  ral_et (tap-hold-release 200 200 ralt lalt)
+  al_bas (layer-switch base)
+  al_lay (multi lalt @al_bas)
+  sh_1 (multi lsft 1)
+  sh_2 (multi lsft 2)
+  sh_3 (multi lsft 3)
+  sh_4 (multi lsft 4)
+  sh_5 (multi lsft 5)
+  sh_6 (multi lsft 6)
+  sh_7 (multi lsft 7)
+  sh_8 (multi lsft 8)
+  sh_9 (multi lsft 9)
+  sh_0 (multi lsft 0)
+  sh_' (multi lsft ')
+  sh_\ (multi lsft \)
+  sh_; (multi lsft ;)
+  sh_] (multi lsft ])
+  sh_[ (multi lsft [)
+  sh_- (multi lsft -)
+  sh_/ (multi lsft /)
+  sh_` (multi lsft `)
+  sh_= (multi lsft =)
+  sh_bas (multi lsft (layer-while-held base))
+)
+
+(defsrc
+	caps
+	lsft
+	lctl 	lmet 	lalt           	spc            	ralt	rmet 	rctl
+)
+
+(deflayer base  
+  	@esct 
+  	lsft 	
+  	lrpv	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+)
+
+(defalias
+  lft (multi (release-key alt) left) ;; release alt if held and also press left rgt (multi (release-key alt) rght) ;; release alt if held and also press rght
+  jk (tap-hold-press 130 1200 j esc)
+  kj (tap-hold-press 130 1200 k esc)
+  'es (tap-dance 130 (' esc))
+)
+
+(defalias
+	;; every milisecond, pixel
+	msup (movemouse-up 5 4)
+	mslft (movemouse-left 5 4)
+	msdwn (movemouse-down 5 4)
+	msrht (movemouse-right 5 4)
+	mwu (mwheel-up 50 120)
+	mwd (mwheel-down 50 120)
+	mwl (mwheel-left 50 120)
+	mwr (mwheel-right 50 120)
+)

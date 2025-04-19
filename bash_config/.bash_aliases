@@ -19,6 +19,13 @@ alias tm="tmux new -s sub"
 alias d="cd $HOME/Downloads"
 alias md="mv ~/Downloads/\"\$(ls ~/Downloads/ -t | head -n 1)\"" 
 
-alias rd="ollama run deepseek-r1:7b"
-alias rl="ollama run llama3.2:latest"
+alias olrd="ollama run deepseek-r1:7b"
+alias olrl="ollama run llama3.2:latest"
 alias row="docker run open-webui"
+
+alias xc="xclip -sel clip"
+
+alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
+alias wm="tmux new -s workspace"
+alias cf="cd \$(find ./ -type d | fzf)"
+alias rd="rm ~/Downloads/*"

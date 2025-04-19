@@ -1,0 +1,12 @@
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service] 
+Type=simple
+ExecStart= /home/light/.cargo/bin/kanata --cfg /home/light/.my_config/kanata/config_corne2.kbd
+Restart=never
+
+[Install]
+WantedBy=default.target 
+

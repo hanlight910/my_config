@@ -22,10 +22,7 @@
   sh_5 (multi lsft 5)
   sh_6 (multi lsft 6)
   sh_7 (multi lsft 7)
-  sh_8 (multi lsft 8)
-  sh_9 (multi lsft 9)
-  sh_0 (multi lsft 0)
-  sh_' (multi lsft ')
+  sh_8 (multi lsft 8) sh_9 (multi lsft 9) sh_0 (multi lsft 0) sh_' (multi lsft ')
   sh_\ (multi lsft \)
   sh_; (multi lsft ;)
   sh_] (multi lsft ])
@@ -81,10 +78,10 @@
 
 (defalias
 	;; every milisecond, pixel
-	msup (movemouse-up 5 4)
-	mslft (movemouse-left 5 4)
-	msdwn (movemouse-down 5 4)
-	msrht (movemouse-right 5 4)
+	msup (movemouse-up 5 5)
+	mslft (movemouse-left 5 5)
+	msdwn (movemouse-down 5 5)
+	msrht (movemouse-right 5 5)
 	mwu (mwheel-up 50 120)
 	mwd (mwheel-down 50 120)
 	mwl (mwheel-left 50 120)
@@ -96,5 +93,5 @@
 	XX		XX		XX    	XX    	XX    	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
 	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
-	XX		XX
+	XX		mlft	
 )
