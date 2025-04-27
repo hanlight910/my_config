@@ -29,3 +29,6 @@ alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
 alias wm="tmux new -s workspace"
 alias cf="cd \$(find ./ -type d | fzf)"
 alias rd="rm ~/Downloads/*"
+
+alias gcw="gcalcli calw"
+alias gca="gcalcli agenda"

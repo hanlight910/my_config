@@ -1,5 +1,4 @@
 #!/bin/bash
-
 GNOME_CONFIG_PATH="$BASH_CONFIG/gnome_setting"
 
 # if [ -f $GNOME_CONFIG_PATH/wallpaper ]; then
@@ -34,7 +33,9 @@ gsettings set org.gnome.settings-daemon\
 '/org/gnome/settings-daemon/plugins/media-keys/custom9/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom10/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom11/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom12/'
+'/org/gnome/settings-daemon/plugins/media-keys/custom12/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom13/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom14/'
 ]"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
@@ -128,6 +129,20 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom12/ command "$BASH_CONFIG/scripts/adbpull.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom12/ binding "<Super>d"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom13/ name 'focus other window'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom13/ command "$BASH_CONFIG/scripts/focusOtherWindow.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom13/ binding "<Super>h"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom14/ name 'focus middle firefox'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom14/ command "$BASH_CONFIG/scripts/focusMiddeFirefox.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom14/ binding "<Super>m"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><Primary>u"]'

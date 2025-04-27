@@ -22,7 +22,10 @@
   sh_5 (multi lsft 5)
   sh_6 (multi lsft 6)
   sh_7 (multi lsft 7)
-  sh_8 (multi lsft 8) sh_9 (multi lsft 9) sh_0 (multi lsft 0) sh_' (multi lsft ')
+  sh_8 (multi lsft 8) 
+  sh_9 (multi lsft 9) 
+  sh_0 (multi lsft 0) 
+  sh_' (multi lsft ')
   sh_\ (multi lsft \)
   sh_; (multi lsft ;)
   sh_] (multi lsft ])
@@ -86,11 +89,13 @@
 	mwd (mwheel-down 50 120)
 	mwl (mwheel-left 50 120)
 	mwr (mwheel-right 50 120)
+	msac(movemouse-speed 300)
 )
+
 
 (deflayer KEYPAD
 	XX		XX		XX    	XX    	XX    	XX    	XX    	mlft	mmid	mrgt	XX		XX
-	XX		XX		XX    	XX    	XX    	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
+	XX		XX		XX    	XX    	@msac  	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
 	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
 	XX		mlft	
