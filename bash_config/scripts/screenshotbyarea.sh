@@ -1,5 +1,5 @@
 mkdir -p ~/Pictures/resources
-FILE=~/Pictures/resources/Screenshot-$(date +%Y%m%d-%H%M%S).png
+FILE=~/Pictures/resources/$(date +%Y%m%d_%H%M%S).png
 gnome-screenshot -a -f $FILE
 
 # xclip -sel clip -t image/png -i $FILE 

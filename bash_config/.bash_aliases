@@ -24,11 +24,26 @@ alias olrl="ollama run llama3.2:latest"
 alias row="docker run open-webui"
 
 alias xc="xclip -sel clip"
+alias xci="xclip -sel clip -t image/png -i"
 
-alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
 alias wm="tmux new -s workspace"
 alias cf="cd \$(find ./ -type d | fzf)"
 alias rd="rm ~/Downloads/*"
 
 alias gcw="gcalcli calw"
 alias gca="gcalcli agenda"
+
+alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
+alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"
+
+alias shr="ssh -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
+
+aichat_f_copy() {
+	aichat "$@" | xclip -sel clip
+}
+alias what="aichat_f_copy Short Answer: what "
+alias how="aichat_f_copy -r %shell% Short Answer: How "
+alias explain="aichat_f_copy -r %explain-shell%"
+alias cli="aichat_f_copy -r %shell%"
+alias codeai="aichat_f_copy -r codas -c"
+alias gen="codeai"

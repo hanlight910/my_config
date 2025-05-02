@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE=~/Pictures/Screenshots/Screenshot-$(date +%Y%m%d-%H%M%S).png
+FILE=~/Pictures/Screenshots/$(dateformat.sh).png
 gnome-screenshot -a -f $FILE
 
 while [ ! -f "$FILE" ]; do

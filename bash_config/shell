@@ -49,18 +49,23 @@ eval "$(fzf --bash)"
 #
 # set -o vi
 session="workspace"
-# tmux new -s "al"
-# if [ -n "$TMUX" ]; then
-# 	current_session=$(tmux display-message -p '#S')
-# 	if [ $current_session != $session ]; then
-# 		if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
-# 			tmux attach-session -t $session
-# 		fi
+sub_session="sub"
+# blank ses
+# ses blank
+# ses tm
+# tm ses
+# if [ -z "$TMUX" ]; then
+# 	if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
+# 		tmux attach-session -t $session
+# 	else
+# 		tmux new -s $session
 # 	fi
-# else
+# fi
+
 if [ -z "$TMUX" ]; then
 	if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
-		tmux attach-session -t $session
+		# tmux attach-session -t $session
+		tmux new -s $sub_session
 	else
 		tmux new -s $session
 	fi

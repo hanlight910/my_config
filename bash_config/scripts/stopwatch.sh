@@ -10,15 +10,17 @@ if [ "$arg" = '-h' ] || [ "$arg" = '--help' ]; then
     exit 0
 fi
 
+CSV_FILE="$HOME/archive/03-RESOURCES/stopwatch_results.csv"  # <== File to store the results
+
 reset_line() {
-    printf '\33[2K\r';
+    printf '\33[2K\r'
 }
 
 get_time() {
     date +'%s.%N'
 }
 
-get_time_diff () {
+get_time_diff() {
     start="$1"
     end="$2"
     nanoDigits="$3"
@@ -58,10 +60,17 @@ while true; do
         last="${time}"
     elif [ "$c" = '*' ]; then
         reset_line
-        echo "Elapsed time: ${finalFormat}$( get_time_diff "${start}" "${time}" 3 )${normalFormat}"
-        exit 0
-    fi
-    if [ "$c" = '*' ]; then
+        finalElapsed="$( get_time_diff "${start}" "${time}" 3 )"
+        echo "Elapsed time: ${finalFormat}${finalElapsed}${normalFormat}"
+
+        # Ask for name
+        echo -n "Enter a name for this stopwatch session: "
+        read session_name
+
+        # Append to CSV
+        echo "\"${session_name}\",\"${finalElapsed}\"" >> "$CSV_FILE"
+
+        echo "Saved to ${CSV_FILE}."
         exit 0
     fi
     reset_line

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/light/.my_config/bash_config/scripts/runsubterminal.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=My Startup App
+Comment=Starts my script at login
+

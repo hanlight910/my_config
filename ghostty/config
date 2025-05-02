@@ -2,5 +2,5 @@ font-family="Hack Nerd Font Mono:style=Regular"
 background=#171421
 background-opacity=0.90
 font-size=14
-
+shell-integration=bash
 # cp config $HOME/.config/ghostty/config
