@@ -35,7 +35,12 @@ gsettings set org.gnome.settings-daemon\
 '/org/gnome/settings-daemon/plugins/media-keys/custom11/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom12/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom13/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom14/'
+'/org/gnome/settings-daemon/plugins/media-keys/custom14/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom15/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom16/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom17/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom18/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom19/'
 ]"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
@@ -64,7 +69,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom4/ command "$BASH_CONFIG/scripts/focusSecondFirefox.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom4/ binding "<Super>u"
+/org/gnome/settings-daemon/plugins/media-keys/custom4/ binding "<Super>m"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom2/ name 'navigate to pdf'
@@ -142,7 +147,45 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom14/ command "$BASH_CONFIG/scripts/focusMiddeFirefox.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom14/ binding "<Super>m"
+/org/gnome/settings-daemon/plugins/media-keys/custom14/ binding "<Super>u"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom15/ name 'extract image text'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom15/ command "$BASH_CONFIG/scripts/extractTextFromImage.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom15/ binding "<Super>t"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom16/ name 'copy image from clip'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom16/ command "$BASH_CONFIG/scripts/copyimagefromclip.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom16/ binding "<Super>e"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom17/ name 'move cursor to focus window'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom17/ command "$BASH_CONFIG/scripts/moveCursorToFocus.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom17/ binding "<Super>f"
+
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ name 'Open site1'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/openSiteOne.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ binding "<Super>z"
+
+
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ name 'Focus third firefox'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/focusThirdFirefox.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom18/ binding "<Super>y"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><Primary>u"]'
@@ -150,4 +193,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><
 # gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybinding
 gsettings set org.gnome.shell.keybindings toggle-quick-settings []
 gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "[]"
+
+
+# gsettings set org.gnome.shell.keybindings toggle-application-view []
 

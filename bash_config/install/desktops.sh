@@ -5,3 +5,4 @@ mkdir -p ~/.config/autostart
 # done
 
 rsync -avd --delete $BASH_CONFIG/desktops/ ~/.config/autostart/
+chmod 777 ~/.config/autostart/*

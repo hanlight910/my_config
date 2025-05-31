@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/light/.my_config/bash_config/scripts/runsubterminal.sh
+Exec=/home/light/.my_config/bash_config/scripts/runterminal.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

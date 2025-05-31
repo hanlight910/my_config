@@ -7,12 +7,14 @@
 	RAI (layer-while-held RAISE)
 	LOW (layer-while-held LOWER)
 	KPAD (layer-while-held KEYPAD)
+	COLE (layer-switch COLEMAK)
   esct (tap-hold 100 130 esc lctrl)
   al_nav (tap-hold-release 200 200 tab (layer-while-held LOWER))
   lal_et (tap-hold-release 100 100 Enter (layer-while-held LOWER))
   ral_et (tap-hold-release 200 200 ralt lalt)
   al_rse1 (tap-hold-release 100 150 spc (layer-while-held RAISE))
   sw_nav (tap-hold-release 100 100 caps (layer-while-held LOWER))
+  cap_mo (tap-hold-release 200 200 caps (layer-while-held KEYPAD))
   al_bas (layer-switch base)
   al_lay (multi lalt @al_bas)
   sh_1 (multi lsft 1)
@@ -37,21 +39,6 @@
   sh_bas (multi lsft (layer-while-held base))
 )
 
-(defsrc
-	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o		p		[ 
-	caps 	a    	s    	d    	f    	g    	h    	j    	k		l		;  
-	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		/ 
-	lctl 	lmet 	lalt           	spc            	ralt	rmet 	rctl
-	home	end
-)
-
-(deflayer base  
-  	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p		bspc
-  	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		@'es
-  	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
-  	lrpv	lmet 	lalt        	spc				@ral_et	rmet 	rctl
-	@RAI	@LOW
-)
 
 (defalias
   atl (multi alt (layer-while-held LOWER))
@@ -63,20 +50,44 @@
   
 )
 
+(defsrc
+	tab  	q    	w    	e    	r    	t    	y    	u    	i    	o		p		[ 
+	caps 	a    	s    	d    	f    	g    	h    	j    	k		l		;		Enter
+	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		/ 
+	lctl 	lmet 	lalt           	spc            	ralt	rmet 	rctl
+	home	end
+)
+
+(deflayer base  
+  	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p		bspc
+  	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		@'es	Enter
+  	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
+  	@COLE	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+	@RAI	@LOW
+)
+
+(deflayer COLEMAK  
+  	@al_nav	q		w    	f    	p    	g    	j    	l    	u    	y    	@'es		bspc
+  	@esct 	a    	r    	s    	t    	d    	h    	n    	e    	i		o			Enter
+  	lsft 	z    	x    	c    	v    	b    	k    	m		,		.		rsft
+  	@al_bas	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+	@RAI	@LOW
+)
+
 (deflayer RAISE
 	lrpv	@sh_1   @sh_2  	@sh_3  	@sh_4  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		bspc   
-  	caps	1    	2    	3    	4    	5    	6    	7    	8    	9    	0	
-	XX		@sh_bas @KPAD	@atl	@lft	@rgt   	]    	@sh_]	-		=		/    
+  	@cap_mo 1    	2    	3    	4    	5    	6    	7    	8    	9    	0		spc
+	lsft    @sh_bas @KPAD	@atl	@lft	@rgt   	]    	@sh_]	-		=		/       
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
-	XX		XX
+	XX		@LOW
 )
 
 (deflayer LOWER
 	tab		F1		F2		F3		F4		F5		F6		F7		F8		F9		F10		bspc
-	F11		@sh_`	@sh_\   @sh_=  	@sh_;  	g    	lft    	down  	up    	rght	;
+	F11		@sh_`	@sh_\   @sh_=  	@sh_;  	g    	lft    	down  	up    	rght	;		Enter
   	F12 	\    	`   	@sh_-  	@sh_[ 	[    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
-	XX		XX
+	@RAI	XX
 ) 
 
 (defalias
@@ -90,12 +101,12 @@
 	mwl (mwheel-left 50 120)
 	mwr (mwheel-right 50 120)
 	msac(movemouse-speed 300)
+	msdc(movemouse-speed 40)
 )
-
 
 (deflayer KEYPAD
 	XX		XX		XX    	XX    	XX    	XX    	XX    	mlft	mmid	mrgt	XX		XX
-	XX		XX		XX    	XX    	@msac  	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		
+	XX		XX		@msdc   @msdc  	@msac  	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		XX
 	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
 	XX		mlft	

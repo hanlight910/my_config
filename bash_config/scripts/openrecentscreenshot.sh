@@ -1,3 +1,3 @@
-SCREENSHOT_PATH="$HOME/Pictures/Screenshots"
+SCREENSHOT_PATH="$IMAGE_RESOURCE"
 open "$SCREENSHOT_PATH/$(ls -t "$SCREENSHOT_PATH" | head -n 1)"
 
