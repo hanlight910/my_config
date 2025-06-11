@@ -1,3 +1,3 @@
 #!/bin/bash
 
-wmctrl -l | grep Firefox | tail -n 2 | head -n 1 | awk '{print $1}' | xargs -I {} wmctrl -ia {}
+wmctrl -l | grep -v -i YouTube | grep Firefox | tail -n 1 | awk '{print $1}' | xargs -I {} wmctrl -ia {}

@@ -13,4 +13,6 @@ target_y=$(($Y + $HEIGHT * $percent_y / 100))
 
 # Move the cursor to the calculated position
 xdotool mousemove $target_x $target_y
+
+sleep 1
 xdotool click 1

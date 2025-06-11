@@ -40,7 +40,8 @@ gsettings set org.gnome.settings-daemon\
 '/org/gnome/settings-daemon/plugins/media-keys/custom16/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom17/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom18/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom19/'
+'/org/gnome/settings-daemon/plugins/media-keys/custom19/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom20/'
 ]"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
@@ -186,6 +187,20 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/focusThirdFirefox.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom18/ binding "<Super>y"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom19/ name 'SST(Speech to Text)'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom19/ command "$BASH_CONFIG/scripts/SST.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom19/ binding "<Super>r"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom20/ name 'Set Windows'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom20/ command "$BASH_CONFIG/scripts/setWindows.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom20/ binding "<Super>a"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><Primary>u"]'
