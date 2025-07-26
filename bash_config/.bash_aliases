@@ -86,6 +86,7 @@ alias fdl="sudo fdisk --list"
 alias mk="mkdir"
 alias mkcd="mkdirCd.sh"
 alias jf="journalctl -f"
+alias rd="rm -rf ~/Downloads"
 
 # key binding
 alias gsk="gsettings list-recursively | grep -i 'keybinding'"
@@ -95,3 +96,5 @@ alias kakao="wine \"/home/light/.wine/drive_c/Program Files (x86)/Kakao/KakaoTal
 alias kn="kanata --cfg config_corne.kbd"
 alias qr="qrencode -o myqr.png "
 alias topdf="libreoffice --headless --convert-to pdf "
+alias topy="jupyter nbconvert --to python "
+alias ipy="ipython"

@@ -61,7 +61,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom1/ name 'navigate to Firefox'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom1/ command 'wmctrl -a Firefox'
+/org/gnome/settings-daemon/plugins/media-keys/custom1/ command "$BASH_CONFIG/scripts/focusFirstFirefox.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom1/ binding "<Super>j"
 

@@ -71,3 +71,12 @@ if [ -z "$TMUX" ]; then
 	fi
 fi
 
+fzf_insert_path() {
+  local dir
+  dir=$(find ../../.. -maxdepth 3 -type d | fzf) || return
+  # Insert directory path at cursor
+  READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}$dir${READLINE_LINE:READLINE_POINT}"
+  READLINE_POINT=$(( READLINE_POINT + ${#dir} ))
+}
+
+bind -x '"\C-g": fzf_insert_path'

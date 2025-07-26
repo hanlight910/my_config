@@ -9,10 +9,11 @@ export BASH_ALIAS="$BASH_CONFIG/.bash_aliases"
 export GNOME_SETTING="$BASH_CONFIG/gnome_setting"
 export GNOME_CONFIG="$GNOME_SETTING/.gnome_config.sh"
 export IMAGE_RESOURCE="$HOME/Pictures/resources"
+export TEMP_DIR="$HOME/.cache/temp"
 
-# bin
+
 export PATH="$BASH_CONFIG/scripts:$PATH"
-export PATH="/home/light/.bash_config/functions/compile/bin:$PATH"
+export PATH="/hom/light/.bash_config/functions/compile/bin:$PATH"
 export PATH="/opt/nvim-linux64/bin:$PATH"
 export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 export PATH="/home/light/development/flutter/bin:$PATH"
