@@ -48,7 +48,6 @@ alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"
 
 # Aider
 
-alias shr="ssh -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
 
 aichat_f_copy() {
 	aichat "$@" | xclip -sel clip
@@ -87,6 +86,7 @@ alias mk="mkdir"
 alias mkcd="mkdirCd.sh"
 alias jf="journalctl -f"
 alias rd="rm -rf ~/Downloads"
+alias da="date"
 
 # key binding
 alias gsk="gsettings list-recursively | grep -i 'keybinding'"
@@ -98,3 +98,8 @@ alias qr="qrencode -o myqr.png "
 alias topdf="libreoffice --headless --convert-to pdf "
 alias topy="jupyter nbconvert --to python "
 alias ipy="ipython"
+
+# ssh
+alias shr="ssh -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
+alias dm="ssh $NAME@$DMLABSERVER"
+alias dmfs="sshfs -p 22 $NAME@$DMLABSERVER:/home/$NAME ~/remote_ssh && nv ~/remote_ssh"

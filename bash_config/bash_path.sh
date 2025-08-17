@@ -11,7 +11,6 @@ export GNOME_CONFIG="$GNOME_SETTING/.gnome_config.sh"
 export IMAGE_RESOURCE="$HOME/Pictures/resources"
 export TEMP_DIR="$HOME/.cache/temp"
 
-
 export PATH="$BASH_CONFIG/scripts:$PATH"
 export PATH="/hom/light/.bash_config/functions/compile/bin:$PATH"
 export PATH="/opt/nvim-linux64/bin:$PATH"
