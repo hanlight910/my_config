@@ -3,9 +3,10 @@
 alias nv="nvim"
 alias c="clear"
 alias py="python3"
+
 # command_argument
 alias eb=". $HOME/.bashrc"
-alias ev=". ./venv/bin/activate"
+alias ev="source $BASH_CONFIG/scripts/activateEnv.sh"
 
 alias ct="cp $CONFIG/tmux/.tmux.conf ~/.tmux.conf"
 alias ek="cp $CONFIG/kanata/kanata.service ~/.config/systemd/user/"
@@ -100,6 +101,31 @@ alias topy="jupyter nbconvert --to python "
 alias ipy="ipython"
 
 # ssh
-alias shr="ssh -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
-alias dm="ssh $NAME@$DMLABSERVER"
-alias dmfs="sshfs -p 22 $NAME@$DMLABSERVER:/home/$NAME ~/remote_ssh && nv ~/remote_ssh"
+alias shr="ssh - t-p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
+alias dm="ssh -t $NAME@$DMLABSERVER \"bash -i\""
+alias dmfs="bash dmfs.sh"
+
+# Scripts
+alias fs="ls $SCRIPT_PATH | fzf --prompt='Select a script > ' --height=20 --reverse "
+
+fzf-select-script() {
+  local script
+  script=$(ls "$SCRIPT_PATH" 2>/dev/null | fzf --prompt='Select a script > ' --height=20 --reverse)
+  if [[ -n "$script" ]]; then
+    READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}${SCRIPT_PATH}/${script} ${READLINE_LINE:READLINE_POINT:}"
+    READLINE_POINT=$(( READLINE_POINT + ${#SCRIPT_PATH} + ${#script} + 2 ))
+  fi
+}
+fzf-select-path() {
+  local script
+  path=$(find "$ARCHIVE_PATH" 2>/dev/null | fzf --prompt='Select a script > ' --height=20 --reverse)
+  if [[ -n "$path" ]]; then
+	READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}${path} ${READLINE_LINE:READLINE_POINT:}"
+	READLINE_POINT=$(( READLINE_POINT + ${#path} + 1 ))
+  fi
+}
+bind -x '"\es": "fzf-select-script"'
+
+bind -x '"\ea": "fzf-select-path"'
+
+alias dl="deleteAllExcept.sh"

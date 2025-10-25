@@ -47,14 +47,14 @@ gsettings set org.gnome.settings-daemon\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom0/ name 'navigate to terminal'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom0/ command 'wmctrl -a workspace'
+/org/gnome/settings-daemon/plugins/media-keys/custom0/ command "$BASH_CONFIG/scripts/focusWorkspace.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom0/ binding "<Super>k"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom3/ name 'navigate to sub'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom3/ command 'wmctrl -a sub'
+/org/gnome/settings-daemon/plugins/media-keys/custom3/ command "$BASH_CONFIG/scripts/focusSubworkspace.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom3/ binding "<Super>i"
 

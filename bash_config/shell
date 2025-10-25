@@ -52,7 +52,7 @@ eval "$(fzf --bash)"
 #
 # set -o vi
 session="workspace"
-sub_session="sub"
+sub_session="subspace"
 # blank ses
 # ses blank
 # ses tm
