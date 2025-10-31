@@ -12,6 +12,7 @@ export IMAGE_RESOURCE="$HOME/Pictures/resources"
 export TEMP_DIR="$HOME/.cache/temp"
 export SCRIPT_PATH="$BASH_CONFIG/scripts"
 export ARCHIVE_PATH="$HOME/archive"
+export REMOTE_PATH="$HOME/remote_ssh"
 
 export PATH="$BASH_CONFIG/scripts:$PATH"
 export PATH="/hom/light/.bash_config/functions/compile/bin:$PATH"
