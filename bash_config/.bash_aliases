@@ -101,7 +101,7 @@ alias topy="jupyter nbconvert --to python "
 alias ipy="ipython"
 
 # ssh
-alias shr="ssh - t-p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
+alias shr="ssh -o IdentitiesOnly=yes -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
 alias dm="ssh -t $NAME@$DMLABSERVER \"bash -i\""
 alias dmfs="bash dmfs.sh"
 
