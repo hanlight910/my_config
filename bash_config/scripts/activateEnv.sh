@@ -5,7 +5,13 @@
 DEEP=5
 DIR=$(pwd)
 for ((i=0; i<DEEP; i++)); do
-	if [ -f "$DIR/venv/bin/activate" ]; then
+	# check .venv or ./venv
+	if [ -d "$DIR/.venv" ]; then
+		source "$DIR/.venv/bin/activate"
+		echo "Activated virtual environment from $DIR/venv"
+		# exit 0
+	fi
+	if [ -d "$DIR/venv" ]; then
 		source "$DIR/venv/bin/activate"
 		echo "Activated virtual environment from $DIR/venv"
 		# exit 0
