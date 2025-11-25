@@ -12,3 +12,11 @@ else
     win_id=$(wmctrl -l | grep -i "$FIREFOX_TAB1" | head -n 1 | awk '{print $1}')
     [ -n "$win_id" ] && wmctrl -ia "$win_id"
 fi
+
+# 개인보다 중앙 교통대란, 
+# 전체적인 시스템을
+# 
+# 교통 시스템 전체를 최적화하고
+# '인간의 실수'로 인한 
+# 비효율(사고, 유령 정체)을 제거
+

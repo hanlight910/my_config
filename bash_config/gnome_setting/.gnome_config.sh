@@ -17,7 +17,6 @@ GNOME_CONFIG_PATH="$BASH_CONFIG/gnome_setting"
 # <Hyper> → Rarely used, can be mapped separately
 #
 # <Mode>
-second_firefox="wmctrl -l | grep Firefox | tail -n 1 | awk \"{print \$1}\" | xargs -I {} wmctrl -ia {})"
 
 gsettings set org.gnome.settings-daemon\
 .plugins.media-keys custom-keybindings \
@@ -41,7 +40,8 @@ gsettings set org.gnome.settings-daemon\
 '/org/gnome/settings-daemon/plugins/media-keys/custom17/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom18/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom19/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom20/'
+'/org/gnome/settings-daemon/plugins/media-keys/custom20/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom21/'
 ]"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
@@ -68,7 +68,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom4/ name 'navigate to Firefox'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom4/ command "$BASH_CONFIG/scripts/focusSecondFirefox.sh"
+/org/gnome/settings-daemon/plugins/media-keys/custom4/ command "$BASH_CONFIG/scripts/focusOtherFirefox.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom4/ binding "<Super>m"
 
@@ -173,15 +173,6 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ name 'Open site1'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/openSiteOne.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ binding "<Super>z"
-
-
-
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom18/ name 'Focus third firefox'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/focusThirdFirefox.sh"
@@ -200,15 +191,22 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom20/ command "$BASH_CONFIG/scripts/setWindows.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom20/ binding "<Super>a"
+/org/gnome/settings-daemon/plugins/media-keys/custom20/ binding "<Super>z"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom21/ name 'Clip to llm'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom21/ command "$BASH_CONFIG/scripts/clip_llm.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom21/ binding "<Super>a"
+
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><Primary>u"]'
 
-# gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybinding
 gsettings set org.gnome.shell.keybindings toggle-quick-settings []
 gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "[]"
 
 
 # gsettings set org.gnome.shell.keybindings toggle-application-view []
-
+# gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings

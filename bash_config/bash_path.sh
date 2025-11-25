@@ -13,6 +13,8 @@ export TEMP_DIR="$HOME/.cache/temp"
 export SCRIPT_PATH="$BASH_CONFIG/scripts"
 export ARCHIVE_PATH="$HOME/archive"
 export REMOTE_PATH="$HOME/remote_ssh"
+export REMOTE1_PATH="$HOME/remote_ssh1"
+export PY_HOME="$HOME/projects/mldl/py3.10"
 
 export PATH="$BASH_CONFIG/scripts:$PATH"
 export PATH="/hom/light/.bash_config/functions/compile/bin:$PATH"

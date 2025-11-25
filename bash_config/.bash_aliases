@@ -88,6 +88,7 @@ alias mkcd="mkdirCd.sh"
 alias jf="journalctl -f"
 alias rd="rm -rf ~/Downloads"
 alias da="date"
+alias gng="gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings"
 
 # key binding
 alias gsk="gsettings list-recursively | grep -i 'keybinding'"
@@ -101,9 +102,11 @@ alias topy="jupyter nbconvert --to python "
 alias ipy="ipython"
 
 # ssh
-alias shr="ssh -o IdentitiesOnly=yes -p $UBUNTU_SSH_PORT $UBUNTU_SSH_USER@$UBUNTU_SERVER_IP"
+# alias shr="ssh -o IdentitiesOnly=yes -p $HOME_PORT $HOMENAME@$HOMESERVER"
+alias shr="ssh -p $HOME_PORT $HOMENAME@$HOMESERVER"
 alias dm="ssh -t $NAME@$DMLABSERVER \"bash -i\""
 alias dmfs="bash dmfs.sh"
+alias shfs="bash shfs.sh"
 
 # Scripts
 alias fs="ls $SCRIPT_PATH | fzf --prompt='Select a script > ' --height=20 --reverse "
