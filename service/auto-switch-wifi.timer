@@ -1,0 +1,10 @@
+[Unit]
+Description=Check WiFi periodically
+
+[Timer]
+OnBootSec=10
+OnUnitActiveSec=15
+
+[Install]
+WantedBy=timers.target
+

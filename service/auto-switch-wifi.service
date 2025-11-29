@@ -1,0 +1,7 @@
+[Unit]
+Description=Auto switch to dmlab_5G
+
+[Service]
+Type=simple
+ExecStart=/<path>/scripts/auto-switch-wifi.sh
+

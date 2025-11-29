@@ -15,7 +15,9 @@
   al_rse1 (tap-hold-release 100 150 spc (layer-while-held RAISE))
   sw_nav (tap-hold-release 100 100 caps (layer-while-held LOWER))
   cap_mo (tap-hold-release 200 200 caps (layer-while-held KEYPAD))
+  al_ln (layer-while-held LEFT_ARROW)
   al_bas (layer-switch base)
+  sw_one (layer-switch ONE_KEY)
   al_lay (multi lalt @al_bas)
   sh_1 (multi lsft 1)
   sh_2 (multi lsft 2)
@@ -37,6 +39,11 @@
   sh_` (multi lsft `)
   sh_= (multi lsft =)
   sh_bas (multi lsft (layer-while-held base))
+  ct_l (multi lctl @al_bas)
+  ct_b (multi lctl (layer-while-held base))
+  cp (multi lctl c)
+  vp (multi lctl v)
+  ha (multi lctl a)
 )
 
 
@@ -47,7 +54,6 @@
   jk (tap-hold-press 130 1200 j esc)
   kj (tap-hold-press 130 1200 k esc)
   'es (tap-dance 130 (' esc))
-  
 )
 
 (defsrc
@@ -62,7 +68,7 @@
   	@al_nav	q		w    	e    	r    	t    	y    	u    	i    	o    	p		bspc
   	@esct 	a    	s    	d    	f    	g    	h    	j    	k    	l		@'es	Enter
   	lsft 	z    	x    	c    	v    	b    	n    	m		,		.		rsft
-  	@COLE	lmet 	lalt        	spc				@ral_et	rmet 	rctl
+  	@sw_one	lmet 	lalt        	spc				@ral_et	rmet 	rctl
 	@RAI	@LOW
 )
 
@@ -79,7 +85,7 @@
   	@cap_mo 1    	2    	3    	4    	5    	6    	7    	8    	9    	0		spc
 	lsft    @sh_bas @KPAD	@atl	@lft	@rgt   	]    	@sh_]	-		=		/       
   	lctl 	lmet 	@sh_-          	@al_lay         +		rmet 	rctl
-	XX		@LOW
+	XX		@ct_b
 )
 
 (deflayer LOWER
@@ -87,7 +93,7 @@
 	F11		@sh_`	@sh_\   @sh_=  	@sh_;  	g    	lft    	down  	up    	rght	;		Enter
   	F12 	\    	`   	@sh_-  	@sh_[ 	[    	n    	pgdn	pgup	.		@sh_/    	
   	lctl 	lmet 	lalt           	spc            	ralt 	rmet 	rctl
-	@RAI	XX
+	@ct_b	XX
 ) 
 
 (defalias
@@ -110,4 +116,20 @@
 	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
 	XX		XX		XX           	XX            	XX		XX		XX
 	XX		mlft	
+)
+
+(deflayer LEFT_ARROW
+	XX		XX		@ha   	@cp    	@vp    	bspc  	XX    	mlft	mmid	mrgt	XX		XX
+	XX		left    down    up      right  	XX    	@mslft	@msdwn	@msup  	@msrht	kp6		XX
+	XX		XX		XX		XX    	XX    	XX    	@mwl   	@mwd    @mwu   	@mwr   	XX    
+	XX		XX		XX           	XX            	XX		XX		XX
+	XX		mlft	
+)
+
+(deflayer ONE_KEY
+	lsft    6       7		8       9       0       ]    	@sh_]	-		=		/		XX
+  	@esct	1    	2    	3    	4    	5    	6    	7    	8    	9    	0		spc
+	lrpv	z		c		a		@sh_3  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		
+	@al_bas lmet	c      	        @al_ln			XX		rmet 	rctl    
+	lctl	XX
 )

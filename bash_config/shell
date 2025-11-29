@@ -53,25 +53,27 @@ eval "$(fzf --bash)"
 # set -o vi
 session="workspace"
 sub_session="subspace"
-# blank ses
-# ses blank
-# ses tm
-# tm ses
-# if [ -z "$TMUX" ]; then
-# 	if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
-# 		tmux attach-session -t $session
-# 	else
-# 		tmux new -s $session
-# 	fi
-# fi
 
-if [ -z "$TMUX" ]; then
-	if tmux has-session -t $session 2>/dev/null && [ $? == 0 ]; then
-		# tmux attach-session -t $session
-		tmux new -s $sub_session
-	else
-		tmux new -s $session
-	fi
+# tmux inside tmux 방지
+if [ -n "$TMUX" ]; then
+    return
+fi
+
+# tmux 서버가 이미 살아있는지 확인
+if tmux ls >/dev/null 2>&1; then
+    # 서버 살아있으면 sub_session으로
+    if tmux has-session -t "$sub_session" 2>/dev/null; then
+        tmux attach-session -t "$sub_session"
+    else
+        tmux new-session -s "$sub_session"
+    fi
+else
+    # 최초 터미널은 workspace로
+    if tmux has-session -t "$session" 2>/dev/null; then
+        tmux attach-session -t "$session"
+    else
+        tmux new-session -s "$session"
+    fi
 fi
 
 fzf_insert_path() {
