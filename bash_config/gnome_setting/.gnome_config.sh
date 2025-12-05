@@ -41,7 +41,8 @@ gsettings set org.gnome.settings-daemon\
 '/org/gnome/settings-daemon/plugins/media-keys/custom18/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom19/',
 '/org/gnome/settings-daemon/plugins/media-keys/custom20/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom21/'
+'/org/gnome/settings-daemon/plugins/media-keys/custom21/',
+'/org/gnome/settings-daemon/plugins/media-keys/custom22/'
 ]"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
@@ -199,6 +200,13 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom21/ command "$BASH_CONFIG/scripts/clip_llm.sh"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
 /org/gnome/settings-daemon/plugins/media-keys/custom21/ binding "<Super>a"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom22/ name 'scrcpy'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom22/ command "scrcpy"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
+/org/gnome/settings-daemon/plugins/media-keys/custom22/ binding "<Super>n"
 
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'

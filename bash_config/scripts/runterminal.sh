@@ -1,7 +1,8 @@
 #!/bin/bash
 
-ghostty > /dev/null 2>&1 &
+ghostty -e tmux new-session -A -s workspace &
 
 sleep 2
 
-ghostty > /dev/null 2>&1 &
+# Launch terminal 2 with tmux session 'subspace'
+ghostty -e tmux new-session -A -s subspace &

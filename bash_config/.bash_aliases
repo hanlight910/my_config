@@ -13,6 +13,7 @@ alias ek="cp $CONFIG/kanata/kanata.service ~/.config/systemd/user/"
 alias cg="cp $CONFIG/ghostty/config $XDG_CONFIG_HOME/ghostty/config"
 
 alias ld="ls ~/Downloads"
+alias rd="rm -rf ~/Downloads/*"
 
 alias gS="git status"
 alias gC="git checkout"
@@ -78,7 +79,6 @@ alias fdl="sudo fdisk --list"
 alias mk="mkdir"
 alias mkcd="mkdirCd.sh"
 alias jf="journalctl -f"
-alias rd="rm -rf ~/Downloads"
 alias da="date"
 alias gng="gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings"
 
@@ -147,13 +147,23 @@ fzf-current-ls() {
     if [[ -n "$files" ]]; then
         local file
         while IFS= read -r file; do
-            local escaped_file="${file// /\\ }"
-            READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}${escaped_file} ${READLINE_LINE:READLINE_POINT:}"
-            READLINE_POINT=$(( READLINE_POINT + ${#escaped_file} + 1 ))
+            # wrap up the file name with quotes to handle spaces
+            local quoted_file="\"$file\""
+
+            READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}${quoted_file} ${READLINE_LINE:READLINE_POINT:}"
+            READLINE_POINT=$(( READLINE_POINT + ${#quoted_file} + 1 ))
         done <<< "$files"
     fi
+}
+
+cd_parent() {
+    cd .. || return
+    # 프롬프트 즉시 갱신
+    eval "$(starship init bash)"
 }
 
 bind -x '"\es": "fzf-select-script"'
 bind -x '"\ea": "fzf-select-path"'
 bind -x '"\ek": "fzf-current-ls"'
+bind -x '"\e":"cd_parent"'
+
