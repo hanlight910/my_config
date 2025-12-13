@@ -92,6 +92,7 @@ alias qr="qrencode -o myqr.png "
 alias topdf="libreoffice --headless --convert-to pdf "
 alias topy="jupyter nbconvert --to python "
 alias ipy="ipython"
+alias wy="nohup weylus --no-gui &"
 
 # ssh
 # alias shr="ssh -o IdentitiesOnly=yes -p $HOME_PORT $HOMENAME@$HOMESERVER"
@@ -101,8 +102,6 @@ alias dmfs="bash dmfs.sh"
 alias shfs="bash shfs.sh"
 
 # Scripts
-
-
 alias dl="deleteAllExcept.sh"
 
 # python
@@ -112,17 +111,6 @@ alias pip="pip install "
 # wifi
 alias nw="nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes'"
 
-# fzf
-alias lf='fzf -m --reverse | xargs -r ls -1d'
-
-alias xf="fzf | xclip -sel clip"
-alias cf="cd \"\$(find ./ -type d | fzf)\""
-alias of="open \"\$(fzf)\""
-alias sf="realpath \"\$(fzf)\" | xclip -sel clip"
-alias f="\"\`fzf\`\""
-alias rf="rm -rf \"\`fzf\`\""
-alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
-alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"
 
 fzf-select-script() {
   local script
@@ -140,9 +128,11 @@ fzf-select-path() {
 	READLINE_POINT=$(( READLINE_POINT + ${#path} + 1 ))
   fi
 }
-fzf-current-ls() {
+
+fzf-select-current-files() {
+	local path="$1"
     local files
-    files=$(ls . 2>/dev/null | fzf --prompt='Select a file > ' --height=20 -m --reverse)
+    files=$(ls "$path" 2>/dev/null | fzf --prompt='Select a file > ' --height=20 -m --reverse)
 
     if [[ -n "$files" ]]; then
         local file
@@ -156,6 +146,24 @@ fzf-current-ls() {
     fi
 }
 
+fzf-select-multiple-files() {
+	local path="$1"
+	local files
+	# full path
+	files=$(find "$path" -type f 2>/dev/null | fzf --prompt='Select files > ' --height=20 -m --reverse)
+
+	if [[ -n "$files" ]]; then
+		local file
+		while IFS= read -r file; do
+			# wrap up the file name with quotes to handle spaces
+			local quoted_file="\"$file\""
+
+			READLINE_LINE="${READLINE_LINE:0:READLINE_POINT}${quoted_file} ${READLINE_LINE:READLINE_POINT:}"
+			READLINE_POINT=$(( READLINE_POINT + ${#quoted_file} + 1 ))
+		done <<< "$files"
+	fi
+}
+
 cd_parent() {
     cd .. || return
     # 프롬프트 즉시 갱신
@@ -164,6 +172,18 @@ cd_parent() {
 
 bind -x '"\es": "fzf-select-script"'
 bind -x '"\ea": "fzf-select-path"'
-bind -x '"\ek": "fzf-current-ls"'
-bind -x '"\e":"cd_parent"'
+bind -x '"\ek": "fzf-select-current-files ."'
+bind -x '"\es":"cd_parent"'
+bind -x '"\ej":"fzf-select-multiple-files ~/Documents/KakaoTalk\ Downloads/"'
 
+# fzf
+alias lf='fzf -m --reverse | xargs -r ls -1d'
+
+alias xf="fzf | xclip -sel clip"
+alias cf="cd \"\$(find ./ -type d | fzf)\""
+alias of="open \"\$(fzf)\""
+alias sf="realpath \"\$(fzf)\" | xclip -sel clip"
+alias f="\"\`fzf\`\""
+alias rf="rm -rf \"\`fzf\`\""
+alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
+alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"

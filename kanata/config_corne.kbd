@@ -44,6 +44,7 @@
   cp (multi lctl c)
   vp (multi lctl v)
   ha (multi lctl a)
+  uz (multi lctl z)
 )
 
 
@@ -127,9 +128,9 @@
 )
 
 (deflayer ONE_KEY
-	lsft    6       7		8       9       0       ]    	@sh_]	-		=		/		XX
+	bspc    6       7		8       9       0       ]    	@sh_]	-		=		/		XX
   	@esct	1    	2    	3    	4    	5    	6    	7    	8    	9    	0		spc
-	lrpv	z		c		a		@sh_3  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		
-	@al_bas lmet	c      	        @al_ln			XX		rmet 	rctl    
+	lrpv	@uz		@cp		@ha		@sh_3  	@sh_5  	@sh_6  	@sh_7  	@sh_8  	S-9		S-0		
+	@al_bas lmet	c      	        spc				XX		rmet 	rctl    
 	lctl	XX
 )
