@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET="dmlab_5G"
+TARGET="dml_5G"
 
 if nmcli dev wifi list | grep -q "$TARGET"; then
 	CURRENT=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)

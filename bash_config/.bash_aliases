@@ -173,7 +173,7 @@ cd_parent() {
 bind -x '"\es": "fzf-select-script"'
 bind -x '"\ea": "fzf-select-path"'
 bind -x '"\ek": "fzf-select-current-files ."'
-bind -x '"\es":"cd_parent"'
+# bind -x '"\es":"cd_parent"'
 bind -x '"\ej":"fzf-select-multiple-files ~/Documents/KakaoTalk\ Downloads/"'
 
 # fzf
@@ -187,3 +187,6 @@ alias f="\"\`fzf\`\""
 alias rf="rm -rf \"\`fzf\`\""
 alias nvi="nvim \$(fzf --preview=\"bat --color=always {}\")"
 alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"
+
+# Network
+alias ar="aria2c -x 16 -s 16 -k 1M "

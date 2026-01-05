@@ -6,7 +6,7 @@ LOG_FILE="/home/light/Downloads/clip_llm.log"
 echo "PY_HOme: $PY_HOME" > $LOG_FILE
 
 # Run Python script and capture output & errors
-"$PY_HOME/venv/bin/python3" "$PY_HOME/myai/mygemini.py" >> "$LOG_FILE" 2>&1
+"$PY_HOME/venv/bin/python3" "$PY_HOME/my_ai/mygemini.py" >> "$LOG_FILE" 2>&1
 PY_EXIT=$?  # Save exit code
 
 # Log the processing attempt

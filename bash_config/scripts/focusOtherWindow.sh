@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output=$(wmctrl -l | grep -Ev 'BDHF|Firefox|workspace|sub|pdf|Desktop Icons')
+output=$(wmctrl -l | awk 'NF > 3' | grep -Ev 'BDHF|Firefox|workspace|sub|pdf|Desktop Icons')
 
 wmctrl -i -a "$(echo "$output" | awk 'NR==1 {print $1}')"
 
