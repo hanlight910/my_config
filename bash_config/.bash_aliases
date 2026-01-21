@@ -190,3 +190,5 @@ alias mf="mv \`fzf --preview=\"bat --color=always {}\"\`"
 
 # Network
 alias ar="aria2c -x 16 -s 16 -k 1M "
+alias vpn="sudo openvpn --daemon --config " 
+alias ns="sudo systemctl restart NetworkManager"

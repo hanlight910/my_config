@@ -1,220 +1,215 @@
 #!/bin/bash
+
+# GNOME Custom Keybindings Configuration
+# This script sets up all custom keyboard shortcuts for GNOME desktop
+
 GNOME_CONFIG_PATH="$BASH_CONFIG/gnome_setting"
+CUSTOM_KB_BASE="org.gnome.settings-daemon.plugins.media-keys"
+CUSTOM_KB_PATH="/org/gnome/settings-daemon/plugins/media-keys"
 
-# if [ -f $GNOME_CONFIG_PATH/wallpaper ]; then
-#     . "$GNOME_CONFIG_PATH/wallpaper" 
-# else
-#     echo "$WALLPAPER_PATH/wallpaper is missing"
-# fi
-
+# Key modifier reference:
 # <Primary> → Ctrl
-#
-# <Shift> → Shift
-#
-# <Alt> → Alt #
-# <Super> → Windows (Meta) key
-#
-# <Hyper> → Rarely used, can be mapped separately
-#
-# <Mode>
+# <Shift>   → Shift
+# <Alt>     → Alt
+# <Super>   → Windows/Meta key
+# <Hyper>   → Rarely used, can be mapped separately
 
-gsettings set org.gnome.settings-daemon\
-.plugins.media-keys custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom0/'
-,'/org/gnome/settings-daemon/plugins/media-keys/custom1/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom2/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom3/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom4/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom5/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom6/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom7/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom8/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom9/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom10/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom11/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom12/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom13/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom14/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom15/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom16/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom17/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom18/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom19/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom20/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom21/',
-'/org/gnome/settings-daemon/plugins/media-keys/custom22/'
-]"
+# Helper function to set a custom keybinding
+# Usage: set_keybinding INDEX NAME COMMAND BINDING
+set_keybinding() {
+    local index=$1
+    local name=$2
+    local command=$3
+    local binding=$4
+    local path="${CUSTOM_KB_PATH}/custom${index}/"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom0/ name 'navigate to terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom0/ command "$BASH_CONFIG/scripts/focusWorkspace.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom0/ binding "<Super>k"
+    gsettings set "${CUSTOM_KB_BASE}.custom-keybinding:${path}" name "$name"
+    gsettings set "${CUSTOM_KB_BASE}.custom-keybinding:${path}" command "$command"
+    gsettings set "${CUSTOM_KB_BASE}.custom-keybinding:${path}" binding "$binding"
+}
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom3/ name 'navigate to sub'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom3/ command "$BASH_CONFIG/scripts/focusSubworkspace.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom3/ binding "<Super>i"
+# Build the custom keybindings array
+# This automatically generates the list of custom keybinding paths
+declare -a keybindings
+for i in {0..23}; do
+    keybindings+=("'${CUSTOM_KB_PATH}/custom${i}/'")
+done
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom1/ name 'navigate to Firefox'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom1/ command "$BASH_CONFIG/scripts/focusFirstFirefox.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom1/ binding "<Super>j"
+# Join array elements with commas and set the custom-keybindings list
+kb_list="[$(IFS=,; echo "${keybindings[*]}")]"
+gsettings set "${CUSTOM_KB_BASE}" custom-keybindings "$kb_list"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom4/ name 'navigate to Firefox'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom4/ command "$BASH_CONFIG/scripts/focusOtherFirefox.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom4/ binding "<Super>m"
+# ============================================================================
+# Workspace & Window Navigation
+# ============================================================================
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom2/ name 'navigate to pdf'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom2/ command 'wmctrl -a pdf'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom2/ binding "<Super>l"
+set_keybinding 0 \
+    "Navigate to terminal workspace" \
+    "$BASH_CONFIG/scripts/focusWorkspace.sh" \
+    "<Super>k"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom5/ name 'navigate to pdf2'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom5/ command "$BASH_CONFIG/scripts/focusSecondPdf.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom5/ binding "<Super>o"
+set_keybinding 3 \
+    "Navigate to sub workspace" \
+    "$BASH_CONFIG/scripts/focusSubworkspace.sh" \
+    "<Super>i"
 
-# ==== === Screenshot
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom6/ name 'custom screenshot'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom6/ command "$BASH_CONFIG/scripts/screenshot.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom6/ binding "<Super>p"
+set_keybinding 13 \
+    "Focus other window" \
+    "$BASH_CONFIG/scripts/focusOtherWindow.sh" \
+    "<Super>h"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom7/ name 'custom screenshot'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom7/ command "$BASH_CONFIG/scripts/screenshotbyarea.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom7/ binding "<Super><Primary>p"
+set_keybinding 17 \
+    "Move cursor to focused window" \
+    "$BASH_CONFIG/scripts/moveCursorToFocus.sh" \
+    "<Super>f"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom8/ name 'switch kanata layout'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom8/ command "$BASH_CONFIG/scripts/startkanata.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom8/ binding "<Super>w"
+set_keybinding 20 \
+    "Set Windows layout" \
+    "$BASH_CONFIG/scripts/setWindows.sh" \
+    "<Super>z"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom9/ name 'open cliboard menu'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom9/ command "$BASH_CONFIG/scripts/clipboardmenu.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom9/ binding "<Super>s"
+# ============================================================================
+# Application Focus - Firefox
+# ============================================================================
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom10/ name 'screenshot and copy image'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom10/ command "$BASH_CONFIG/scripts/screenshotcopyimage.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom10/ binding "<Super><Shift>p"
+set_keybinding 1 \
+    "Focus first Firefox window" \
+    "$BASH_CONFIG/scripts/focusFirstFirefox.sh" \
+    "<Super>j"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom11/ name 'screenshot area and copy image'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom11/ command "$BASH_CONFIG/scripts/screenshotbyareacopyimage.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom11/ binding "<Super><Shift><Primary>p"
+set_keybinding 4 \
+    "Focus other Firefox window" \
+    "$BASH_CONFIG/scripts/focusOtherFirefox.sh" \
+    "<Super>m"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom12/ name 'adb pull latest screenshot'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom12/ command "$BASH_CONFIG/scripts/adbpull.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom12/ binding "<Super>d"
+set_keybinding 14 \
+    "Focus middle Firefox window" \
+    "$BASH_CONFIG/scripts/focusMiddeFirefox.sh" \
+    "<Super>u"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom13/ name 'focus other window'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom13/ command "$BASH_CONFIG/scripts/focusOtherWindow.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom13/ binding "<Super>h"
+set_keybinding 18 \
+    "Focus third Firefox window" \
+    "$BASH_CONFIG/scripts/focusThirdFirefox.sh" \
+    "<Super>y"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom14/ name 'focus middle firefox'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom14/ command "$BASH_CONFIG/scripts/focusMiddeFirefox.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom14/ binding "<Super>u"
+# ============================================================================
+# Application Focus - PDF
+# ============================================================================
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom15/ name 'extract image text'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom15/ command "$BASH_CONFIG/scripts/extractTextFromImage.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom15/ binding "<Super>t"
+set_keybinding 2 \
+    "Navigate to PDF viewer" \
+    "wmctrl -a pdf" \
+    "<Super>l"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom16/ name 'copy image from clip'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom16/ command "$BASH_CONFIG/scripts/copyimagefromclip.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom16/ binding "<Super>e"
+set_keybinding 5 \
+    "Navigate to second PDF" \
+    "$BASH_CONFIG/scripts/focusSecondPdf.sh" \
+    "<Super>o"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom17/ name 'move cursor to focus window'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom17/ command "$BASH_CONFIG/scripts/moveCursorToFocus.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom17/ binding "<Super>f"
+# ============================================================================
+# Screenshots
+# ============================================================================
 
+# set_keybinding 6 \
+#     "Screenshot (full screen to file)" \
+#     "$BASH_CONFIG/scripts/screenshot.sh" \
+#     "<Super>p"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ name 'Focus third firefox'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ command "$BASH_CONFIG/scripts/focusThirdFirefox.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom18/ binding "<Super>y"
+set_keybinding 7 \
+    "Screenshot by area (to file)" \
+    "$BASH_CONFIG/scripts/screenshotbyarea.sh" \
+    "<Super><Primary>p"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom19/ name 'SST(Speech to Text)'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom19/ command "$BASH_CONFIG/scripts/SST.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom19/ binding "<Super>r"
+set_keybinding 10 \
+    "Execute PPT script" \
+    "$BASH_CONFIG/scripts/ppt.sh" \
+    "<Super>p"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom20/ name 'Set Windows'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom20/ command "$BASH_CONFIG/scripts/setWindows.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom20/ binding "<Super>z"
+# set_keybinding 11 \
+#     "Screenshot area and copy to clipboard" \
+#     "$BASH_CONFIG/scripts/screenshotbyareacopyimage.sh" \
+#     "<Super><Shift><Primary>p"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom21/ name 'Clip to llm'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom21/ command "$BASH_CONFIG/scripts/cursor_llm.sh"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom21/ binding "<Super>a"
+# ============================================================================
+# Android Device Integration
+# ============================================================================
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom22/ name 'scrcpy'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom22/ command "scrcpy"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:\
-/org/gnome/settings-daemon/plugins/media-keys/custom22/ binding "<Super>n"
+set_keybinding 12 \
+    "ADB pull latest screenshot" \
+    "$BASH_CONFIG/scripts/adbpull.sh" \
+    "<Super>d"
 
+set_keybinding 22 \
+    "Launch scrcpy (screen mirror)" \
+    "scrcpy" \
+    "<Super>n"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '["<Super><Primary>y"]'
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '["<Super><Primary>u"]'
+# ============================================================================
+# AI & LLM Tools
+# ============================================================================
 
-gsettings set org.gnome.shell.keybindings toggle-quick-settings []
-gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "[]"
+set_keybinding 21 \
+    "Clipboard to LLM" \
+    "$BASH_CONFIG/scripts/cursor_llm.sh" \
+    "<Super>a"
 
+set_keybinding 15 \
+    "Extract text from image (OCR)" \
+    "$BASH_CONFIG/scripts/extractTextFromImage.sh" \
+    "<Super>t"
 
-# gsettings set org.gnome.shell.keybindings toggle-application-view []
-# gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings
+set_keybinding 6 \
+    "LLM OCR (clipboard path)" \
+    "$BASH_CONFIG/scripts/llm_ocr.sh" \
+    "<Super><Primary>o"
+
+set_keybinding 11 \
+    "PDF to Markdown" \
+    "$BASH_CONFIG/scripts/pdf2md.sh" \
+    "<Super><Primary>m"
+
+set_keybinding 19 \
+    "Speech to Text (SST)" \
+    "$BASH_CONFIG/scripts/SST.sh" \
+    "<Super>r"
+
+# ============================================================================
+# Clipboard & Utilities
+# ============================================================================
+
+set_keybinding 9 \
+    "Open clipboard menu" \
+    "$BASH_CONFIG/scripts/clipboardmenu.sh" \
+    "<Super>s"
+
+set_keybinding 16 \
+    "Copy image from clipboard to file" \
+    "$BASH_CONFIG/scripts/copyimagefromclip.sh" \
+    "<Super>e"
+
+set_keybinding 8 \
+    "Switch Kanata keyboard layout" \
+    "$BASH_CONFIG/scripts/startkanata.sh" \
+    "<Super>w"
+
+set_keybinding 23 \
+    "Convert LaTeX to PNG" \
+    "$BASH_CONFIG/scripts/tex2png.sh" \
+    "<Super><Primary>l"
+
+# ============================================================================
+# System Media Keys
+# ============================================================================
+
+# Volume controls
+gsettings set "${CUSTOM_KB_BASE}" volume-down '["<Super><Primary>y"]'
+gsettings set "${CUSTOM_KB_BASE}" volume-up '["<Super><Primary>u"]'
+
+# Disable conflicting default keybindings
+gsettings set org.gnome.shell.keybindings toggle-quick-settings "[]"
+gsettings set "${CUSTOM_KB_BASE}" rotate-video-lock-static "[]"
+
+# Optional: Uncomment to disable application view toggle
+# gsettings set org.gnome.shell.keybindings toggle-application-view "[]"
+
+echo "GNOME keybindings configured successfully"

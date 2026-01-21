@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set full PATH for GNOME keybinding execution
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+
 # ================= CONFIGURATION =================
 # Docker Container Name (Default is usually 'windows')
 CONTAINER_NAME="WinApps" 
@@ -57,5 +60,5 @@ xfreerdp3 /u:"$USER" /p:"$PASS" /v:$IP /cert:tofu \
     /sound \
     /network:lan \
 	+grab-keyboard \
-	/kbd:layout:0x0412,type:8,subtype:3 \
-    /drive:$SHARE_NAME,$SHARE_PATH
+	/kbd:layout:0x0412 \
+    /drive:$SHARE_NAME,$SHARE_PATH &
